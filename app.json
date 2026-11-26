@@ -1,4 +1,7 @@
 {
   "name": "PDFReader",
-  "displayName": "PDFReader"
+  "displayName": "PDFReader",
+  "react-native-google-mobile-ads": {
+    "android_app_id": "ca-app-pub-6741963315615698~2030369092"
+  }
 }

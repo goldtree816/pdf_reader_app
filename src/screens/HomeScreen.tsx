@@ -11,6 +11,8 @@ import {pick} from '@react-native-documents/picker';
 import type { CompositeScreenProps } from '@react-navigation/native';
 import type { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
+import BannerAd from '../components/BannerAd';
+import InterstitialAdManager from '../components/InterstitialAdManager';
 import {
   cachePdf,
   getDocumentId,
@@ -88,6 +90,7 @@ const HomeScreen = ({ navigation }: Props) => {
         lastOpenedAt: Date.now(),
       });
 
+      InterstitialAdManager.recordEligibleNavigation();
       navigation.navigate('PdfViewer', {uri, name});
     } catch (error: any) {
       console.log('PDF PICKER ERROR:', error);
@@ -134,6 +137,10 @@ const HomeScreen = ({ navigation }: Props) => {
         <Text style={styles.cardText}>
           {recentDocument ? 'Most recently opened' : 'Open a PDF to start reading'}
         </Text>
+      </View>
+
+      <View style={styles.adContainer}>
+        <BannerAd />
       </View>
     </View>
   );
@@ -191,6 +198,9 @@ const styles = StyleSheet.create({
     color: '#9295A3',
     fontSize: 16,
     marginTop: 8,
+  },
+  adContainer: {
+    marginTop: 'auto',
   },
 });
 

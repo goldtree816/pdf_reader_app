@@ -1,17 +1,37 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {StyleSheet, View} from 'react-native';
 import {
   BannerAd as GoogleBannerAd,
   BannerAdSize,
   TestIds,
 } from 'react-native-google-mobile-ads';
+import initializeAds from '../utils/adInitialization';
 
 const PRODUCTION_BANNER_ID = 'ca-app-pub-6741963315615698/6978203749';
 
 const BannerAd = () => {
+  const [isInitialized, setIsInitialized] = useState(false);
   const [hasError, setHasError] = useState(false);
 
-  if (hasError) {
+  useEffect(() => {
+    let isMounted = true;
+
+    initializeAds()
+      .then(() => {
+        if (isMounted) {
+          setIsInitialized(true);
+        }
+      })
+      .catch(error => {
+        console.error('Banner ad could not initialize AdMob:', error);
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  if (!isInitialized || hasError) {
     return null;
   }
 

@@ -543,8 +543,8 @@
     "android": {
       "sourceDir": "/home/ghostedsage/bibek/project/PDFReader/android",
       "appName": "app",
-      "packageName": "com.pdfreader",
-      "applicationId": "com.pdfreader",
+      "packageName": "com.bibek.pdfreader",
+      "applicationId": "com.bibek.pdfreader",
       "mainActivity": ".MainActivity",
       "assets": []
     }

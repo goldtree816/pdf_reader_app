@@ -11,6 +11,7 @@ import {
 import Pdf from 'react-native-pdf';
 
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
+import BannerAd from '../components/BannerAd';
 
 type RootStackParamList = {
   MainTabs: undefined;
@@ -85,6 +86,8 @@ const PdfViewerScreen = ({ route, navigation }: Props) => {
           console.log('PDF LINK:', url);
         }}
       />
+
+      <BannerAd />
 
       {isLoading && !error && (
         <View style={styles.loading}>
